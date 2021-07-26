@@ -13,7 +13,7 @@ Nuggies.connect(process.env.mongoURI);
 // login to the bot
 client.login(process.env.BOT_TOKEN);
 
-Nuggies.handleInteraction(client);
+Nuggies.handleInteractions(client);
 
 client.commands = new Discord.Collection();
 client.aliases = new Discord.Collection();
