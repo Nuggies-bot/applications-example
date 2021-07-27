@@ -66,3 +66,7 @@ client.on('message', async message => {
         }
     }
 });
+
+client.on('ready', () => {
+    console.log(`${client.user.username} is now ready!`);
+});

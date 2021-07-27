@@ -10,7 +10,7 @@ const application = {
  * @param {String[]} args
  */
 module.exports.run = async (client, message, args) => {
-	Nuggies.applications.setup()
+	Nuggies.applications.setup(message);
 };
 
 module.exports.config = {
