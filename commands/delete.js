@@ -10,10 +10,10 @@ const application = {
  * @param {String[]} args
  */
 module.exports.run = async (client, message, args) => {
-    if(!args[0]) return message.channel.send('please specify the name of the application you want to delete')
-	const state = Nuggies.applications.deleteApplication(message.guild.id, args[0]);
-    if(state) return message.channel.send('application deleted!');
-    else if(!state) return message.channel.send('application not found');
+	if (!args[0]) return message.channel.send('please specify the name of the application you want to delete')
+	const state = Nuggies.applications.deleteapplication({ guildID: message.guild.id, name: args[0] });
+	if (state) return message.channel.send('application deleted!');
+	else if (!state) return message.channel.send('application not found');
 };
 
 module.exports.config = {
