@@ -19,5 +19,9 @@ module.exports.config = {
 	usage: '?create',
 	botPerms: [],
 	userPerms: ['MANAGE_GUILD'],
-	aliases: []
+	data: {
+		name: 'create',
+		description: 'Creates application',
+		defaultPermission: true,
+	},
 };

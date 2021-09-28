@@ -1,19 +1,16 @@
 // require Nuggies
 const Nuggies = require('nuggies');
 const Discord = require('discord.js');
-const application = {
-	questions: [],
-};
 /**
  * @param {Discord.Client} client
- * @param {Discord.Message} message
- * @param {String[]} args
+ * @param {Discord.CommandInteraction} message
+ * @param {Discord.CommandInteractionOptionResolver} args
  */
-module.exports.run = async (client, message, args) => {
-	if (!args[0]) return message.channel.send('please specify the name of the application you want to delete')
-	const state = Nuggies.applications.deleteapplication({ guildID: message.guild.id, name: args[0] });
-	if (state) return message.channel.send('application deleted!');
-	else if (!state) return message.channel.send('application not found');
+module.exports.run = async (client, interaction, args) => {
+	const state = await Nuggies.applications.deleteApplication({ guildID: interaction.guild.id, name: args.getString('name') });
+	console.log(state);
+	if (state) return interaction.reply('application deleted!');
+	else if (!state) return interaction.reply('application not found');
 };
 
 module.exports.config = {
@@ -22,5 +19,17 @@ module.exports.config = {
 	usage: '?delete',
 	botPerms: [],
 	userPerms: ['MANAGE_GUILD'],
-	aliases: []
+	data: {
+		name: 'delete',
+		description: 'Deletes application',
+		defaultPermission: true,
+		options: [
+			{
+				name: 'name',
+				description: 'Name of the application',
+				required: true,
+				type: 'STRING',
+			},
+		],
+	},
 };
