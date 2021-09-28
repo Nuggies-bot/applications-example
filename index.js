@@ -62,5 +62,5 @@ client.on('interactionCreate', async (interaction) => {
 
 client.on('ready', () => {
 	console.log(`${client.user.username} is now ready!`);
-	client.application.commands.set(client.commands.map(x => x.config.data), '780334622164254720');
+	client.application.commands.set(client.commands.map(x => x.config.data));
 });
