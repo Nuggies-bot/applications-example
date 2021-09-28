@@ -8,7 +8,6 @@ const Discord = require('discord.js');
  */
 module.exports.run = async (client, interaction, args) => {
 	const state = await Nuggies.applications.deleteApplication({ guildID: interaction.guild.id, name: args.getString('name') });
-	console.log(state);
 	if (state) return interaction.reply('application deleted!');
 	else if (!state) return interaction.reply('application not found');
 };
